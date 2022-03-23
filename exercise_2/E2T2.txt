@@ -1,0 +1,37 @@
+Research and analyze which of the vulnerabilities appear to be related to the code that was deployed for the environment in this project.
+
+Bonus - provide recommendations on how to remediate the vulnerabilities.
+
+1. (High) Port range 0 to 65535 is reachable from an Internet Gateway
+On the instance i-0c7c5a75ebc4fe0ac, the port range 0-65535 is reachable from 
+the InternetGateway igw-0f68ff80b996e0e89 from an attached ENI eni-0fcc350b71b9bb9c3.
+Recommendations: You can restrict access to your instance by modifying the Security Groups or ACLs in the network path.
+
+2. (Medium) Port 22 is reachable from an Internet Gateway
+On the instance i-0c7c5a75ebc4fe0ac, the port range 22-22 is reachable 
+rom the InternetGateway igw-0f68ff80b996e0e89 from an attached ENI eni-0fcc350b71b9bb9c3.
+Recommendation: You can restrict access to your instance by modifying the Security Groups
+or ACLs in the network path. For this project workflow, we don't need port 22.
+
+3. (Critical) EC2 Security Group
+EC2.19 Security groups should not allow unrestricted access to ports with high risk
+This control checks whether unrestricted incoming traffic for the security groups
+is accessible to the specified ports [3389, 20, 23, 110, 143, 3306, 8080, 1433, 9200, 9300,
+25, 445, 135, 21, 1434, 4333, 5432, 5500, 5601, 22, 3000, 5000, 8088, 8888]
+that have the highest risk. This control passes when none of the rules in a
+security group allow ingress traffic from 0.0.0.0/0 for the listed ports.
+Recommendations: Delete rules from a security group. We can specify access to EC2 web app
+from specific ports only.
+
+4. (High) EC2 instances should use Instance Metadata Service Version 2 (IMDSv2)
+This control checks whether your Amazon Elastic Compute Cloud (Amazon EC2) instance
+metadata version is configured with Instance Metadata Service Version 2 (IMDSv2).
+The control passes if HttpTokens is set to required for IMDSv2. 
+The control fails if HttpTokens is set to optional.
+Recommendations: https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-standards-fsbp-controls.html#ec2-8-remediation
+
+5. (High) EC2 instances should not have a public IPv4 address
+This control checks whether EC2 instances have a public IP address.
+The control fails if the publicIp field is present in the EC2 instance configuration item.
+This control applies to IPv4 addresses only.
+Recommendations: https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-standards-fsbp-controls.html#ec2-9-remediation

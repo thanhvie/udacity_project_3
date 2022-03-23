@@ -1,0 +1,6 @@
+# Identify 2-3 changes that can be made to our environment to prevent an ssh brute force attack from the internet.
+- Disable ssh password login on the application server instance
+- Disable port 22 as it is not required for the workflow
+
+# Neither instance should have had access to the secret recipes bucket, in the even that instance API credentials were compromised how could we have prevented access to sensitive data.
+- We can use S3 bucket server-side encryption to encrypt document

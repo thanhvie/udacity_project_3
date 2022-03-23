@@ -1,0 +1,13 @@
+Based on the architecture diagram, and the steps you have taken so far to upload data and access the application web service, identify at least 2 obvious poor practices as it relates to security.  Include justification.
+
+# Poor practice 1
+the web application does not need access to secret recipe S3 bucket
+but its instance role has right to access all S3 resource,
+include the S3 bucket which contains the secret recipe.
+Justification: need to declare the specific resource that the EC2 web app allows to access
+in the IAM policy.
+
+# Poor practice 2
+In the workflow, there is no need to have ingress access for web app except port 5000,
+but the SecurityGroupIngress allow all request from Internet to EC2 web app. 
+Justification: restrict the ingress access for EC2 web app.

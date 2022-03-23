@@ -1,0 +1,14 @@
+# Identify tools that will allow you to do the following:
+
+## Scan infrastructure as code templates
+Checkov
+### Example vulnerability
+Check: "Ensure all data stored in the S3 bucket is securely encrypted at rest"
+##Scan AMI’s or containers for OS vulnerabilities
+Twistlock
+### Example vulnerability
+Docker: image: private keys stored in image
+##Scan an AWS environment for cloud configuration vulnerabilities
+Amazon Inspector
+### Example vulnerability
+Finding: On instance i-0c7c5a75ebc4fe0ac, process 'python3' is listening on TCP port 5000 which is reachable from the internet

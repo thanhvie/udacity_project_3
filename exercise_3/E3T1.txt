@@ -1,0 +1,14 @@
+# Describe GuardDuty findings that were detected related to the brute force attack
+Unfortunately my GuardDuty console doesn't show anything. It has been 36 hours from the attack
+and there is still no finding from GuardDuty. I attached the screenshot of GuardDuty in this folder.
+All settings are in the same region (us-east-1) 
+
+# Research the AWS Guard Duty documentation page and explain how GuardDuty may have detected this attack
+- i.e. what was its source of information.
+Since this is an attack on EC2 web app, I find a page that explain for all type of GuardDuty
+finding for EC2.
+For this excercise, the finding can be: UnauthorizedAccess:EC2/SSHBruteForce as below.
+https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html#unauthorizedaccess-ec2-sshbruteforce
+
+How GuardDuty may have detected this attack: As I understand, GuardDuty uses machine learning
+model to detect the anomaly activities on user account.

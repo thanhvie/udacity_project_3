@@ -1,0 +1,17 @@
+
+# What additional architectural change can be made to reduce the internet facing attack surface of the web application instance.
+In the diagram, attackers use attack instance from an untrusted public subnet to access the web app instance.
+Since we already restrict the port that can access to web app instance (port 5000 only), another improvement is 
+to review why do we need an instance like the attack instance in the first place.
+If we really need attack instance, then we need to restrict the port that internet can connect to this instance
+
+# Assuming the IAM permissions for the S3 bucket are still insecure, would creating VPC private endpoints for S3 prevent the unauthorized access to the secrets bucket.
+Yes, creating a VPC private endpoints will help
+
+# Will applying default encryption setting to the s3 buckets encrypt the data that already exists?
+No, but we can apply encryption for existing data in bucket as guide below.
+https://aws.amazon.com/blogs/storage/encrypting-existing-amazon-s3-objects-with-the-aws-cli/
+
+# What would happen if the original cloud formation templates are applied to this environment.
+If we run the cloud formation again, we need to check the change set and decide if we want to
+cloud formation overwrite that.
